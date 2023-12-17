@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+[popover] {
+    /* Positioning */
+    position: fixed;
+    inset: unset;
+    top: 0.5rem;
+    right: 0.5rem;
+
+    /* Styling */
+    background: darkred;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+        0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+    color: white;
+    padding: 1rem;
+
+    /* Final state of the exit animation */
+    opacity: 0;
+    transform: translateX(100%);
+
+    transition: opacity 0.7s, transform 0.5s, overlay 0.7s allow-discrete,
+        display 0.7s allow-discrete;
+}
+
+[popover]:popover-open {
+    /* Final state of the show animation */
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Needs to be after the previous [popover]:popover-open rule
+to take effect, as the specificity is the same */
+@starting-style {
+    [popover]:popover-open {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
