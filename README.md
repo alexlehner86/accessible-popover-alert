@@ -1,6 +1,6 @@
 # Accessible Popover Alert
 
-Experimenting with the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to create [accessible alerts](https://www.w3.org/WAI/ARIA/apg/patterns/alert/).
+Experimenting with the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to create [accessible alerts](https://www.w3.org/WAI/ARIA/apg/patterns/alert/). Check out the [live version](https://alexlehner86.github.io/accessible-popover-alert/) on GitHub Pages.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
 
@@ -15,6 +15,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+In the standard production build, the Chrome and Edge browsers would crash due to problems with the `@starting-style` CSS rule. Therefore, the `optimization` option is deactivated for the demo deployed on GitHub Pages. This issue would have to be resolved for a production build of an actual web application.
 
 ## Running unit tests
 
