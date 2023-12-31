@@ -6,15 +6,9 @@ body {
     padding: 0;
 }
 
-.custom-alert[popover] {
-    /* Positioning */
-    position: fixed;
-    inset: unset;
-    top: 0.5rem;
-    right: 0.5rem;
-
-    /* Styling */
-    background: darkred;
+.alert[popover] {
+    --alert-spacing: 0.5rem;
+    background: #b50015;
     border: none;
     border-radius: 0.25rem;
     box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -22,16 +16,55 @@ body {
         0px 1px 18px 0px rgba(0, 0, 0, 0.12);
     color: white;
     padding: 1rem;
+    position: fixed;
 
-    /* Final state of the exit animation */
-    opacity: 0;
-    transform: translateX(100%);
+    &.bottom-center {
+        inset: auto var(--alert-spacing) var(--alert-spacing) var(--alert-spacing);
+        margin: 0 auto;
 
-    transition: opacity 0.7s, transform 0.5s, overlay 0.7s allow-discrete,
-        display 0.7s allow-discrete;
+        /* Final state of the exit animation */
+        opacity: 0;
+        scale: 0.5;
+    
+        transition: opacity 0.5s, scale 0.5s, overlay 0.5s allow-discrete,
+            display 0.5s allow-discrete;
+    }
+
+    &.top-right {
+        inset: var(--alert-spacing) var(--alert-spacing) auto auto;
+        margin-left: var(--alert-spacing);
+
+        /* Final state of the exit animation */
+        opacity: 0;
+        transform: translateX(100%);
+    
+        transition: opacity 0.5s, transform 0.5s, overlay 0.5s allow-discrete,
+            display 0.5s allow-discrete;
+    }
 }
 
-.custom-alert[popover]:popover-open {
+/*******************************************
+ ************ Bottom/Center Alert *********
+ *****************************************/
+.alert[popover].bottom-center:popover-open {
+    /* Final state of the show animation */
+    opacity: 1;
+    scale: 1;
+}
+
+/* Needs to be after the previous [popover]:popover-open rule
+to take effect, as the specificity is the same */
+@starting-style {
+    .alert[popover].bottom-center:popover-open {
+        opacity: 0;
+        scale: 0.5;
+    }
+}
+
+/***************************************
+ ************ Top/Right Alert *********
+ *************************************/
+.alert[popover].top-right:popover-open {
     /* Final state of the show animation */
     opacity: 1;
     transform: translateX(0);
@@ -40,7 +73,7 @@ body {
 /* Needs to be after the previous [popover]:popover-open rule
 to take effect, as the specificity is the same */
 @starting-style {
-    .custom-alert[popover]:popover-open {
+    .alert[popover].top-right:popover-open {
         opacity: 0;
         transform: translateX(100%);
     }

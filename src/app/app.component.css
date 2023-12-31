@@ -1,0 +1,64 @@
+:host {
+    display: block;
+    margin: 1rem;
+}
+
+form {
+    --form-spacing: 0.75rem;
+    container: alert-form / inline-size;
+    background: linear-gradient(
+        90deg,
+        rgb(246, 156, 200) 0%,
+        rgb(237, 98, 209) 35%,
+        rgb(126, 4, 143) 100%
+    );
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    max-width: 26rem;
+    padding: var(--form-spacing);
+
+    .form-field {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        input[type="number"],
+        input[type="text"] {
+            padding: 0.25rem 0.5rem;
+        }
+
+        input[type="number"] {
+            width: 3.5rem;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            min-width: 1rem;
+        }
+    }
+
+    fieldset {
+        display: flex;
+        gap: 0.5rem;
+        border: none;
+        margin-bottom: 1rem;
+        padding: 0;
+
+        legend {
+            padding: 0;
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+@container alert-form (max-width: 15rem) {
+    form .form-field {
+        flex-direction: column;
+        align-items: flex-start;
+
+        input[type="text"] {
+            width: calc(100% - 2 * var(--form-spacing));
+        }
+    }
+}
