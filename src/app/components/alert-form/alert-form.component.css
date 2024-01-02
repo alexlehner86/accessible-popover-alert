@@ -1,0 +1,75 @@
+:host {
+    display: block;
+}
+
+form {
+    --form-spacing: 0.75rem;
+    container: alert-form / inline-size;
+    background: linear-gradient(90deg, rgb(246, 128, 185) 0%, rgb(237, 98, 209) 35%, rgb(184, 6, 207) 100%);
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    max-width: 26rem;
+    padding: var(--form-spacing);
+
+    .form-field {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        input[type='number'],
+        input[type='text'] {
+            padding: 0.25rem 0.5rem;
+        }
+
+        input[type='number'] {
+            width: 3.5rem;
+        }
+
+        input[type='text'] {
+            flex-grow: 1;
+            min-width: 1rem;
+        }
+    }
+
+    fieldset {
+        display: flex;
+        gap: 0.5rem;
+        border: none;
+        margin-bottom: 1rem;
+        padding: 0;
+
+        legend {
+            padding: 0;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    button {
+        --btn-color: hsl(0, 10%, 10%);
+        background: var(--btn-color);
+        border: none;
+        border-radius: 0.25rem;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@supports (color: hsl(from white h s l)) {
+    form button:hover {
+        background: hsl(from var(--btn-color) h s l / 90%);
+    }
+}
+
+@container alert-form (max-width: 15rem) {
+    form .form-field {
+        flex-direction: column;
+        align-items: flex-start;
+
+        input[type='text'] {
+            width: calc(100% - 2 * var(--form-spacing));
+        }
+    }
+}

@@ -2,6 +2,10 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { AlertConfig, AlertPosition } from './alert.interface';
 
+/**
+ * Service for displaying alerts on top of all page content.
+ * Screenreaders automatically announce the current alert when it is shown.
+ */
 @Injectable({
     providedIn: 'root',
 })
@@ -38,6 +42,10 @@ export class AlertService {
         );
     }
 
+    /**
+     * Creates a manual popover element with role="alert".
+     * Screenreaders automatically announce the alert when the popover is shown.
+     */
     private createAlert(message: string, position: AlertPosition): HTMLElement {
         const alertElement = this.document.createElement('div');
         alertElement.setAttribute('popover', 'manual');

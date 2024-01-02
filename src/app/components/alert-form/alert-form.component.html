@@ -1,0 +1,46 @@
+<form (ngSubmit)="showAlert()">
+    <div class="form-field">
+        <label for="alert-message">Message:</label>
+        <input
+            [(ngModel)]="alertMessage"
+            id="alert-message"
+            type="text"
+            name="message"
+            spellcheck="false"
+        >
+    </div>
+    <div class="form-field">
+        <label for="alert-duration">Duration (seconds):</label>
+        <input
+            [(ngModel)]="alertDurationInSeconds"
+            id="alert-duration"
+            type="number"
+            min="1"
+            name="duration"
+        >
+    </div>
+    <fieldset>
+        <legend>Position:</legend>
+        <div>
+            <input
+                [(ngModel)]="alertPosition"
+                type="radio"
+                id="alert-bottom"
+                name="position"
+                [value]="positionValue.BottomCenter"
+            >
+            <label for="alert-bottom">Bottom/Center</label>
+        </div>
+        <div>
+            <input
+                [(ngModel)]="alertPosition"
+                type="radio"
+                id="alert-top"
+                name="position"
+                [value]="positionValue.TopRight"
+            >
+            <label for="alert-top">Top/Right</label>
+        </div>
+    </fieldset>
+    <button type="submit">Show Alert</button>
+</form>

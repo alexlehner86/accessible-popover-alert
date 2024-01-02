@@ -1,47 +1,13 @@
-<h1>Accessible Alerts with Popover API</h1>
-<form (ngSubmit)="showAlert()">
-    <div class="form-field">
-        <label for="alert-message">Message:</label>
-        <input
-            [(ngModel)]="alertMessage"
-            id="alert-message"
-            type="text"
-            name="message"
-            spellcheck="false"
-        >
-    </div>
-    <div class="form-field">
-        <label for="alert-duration">Duration (seconds):</label>
-        <input
-            [(ngModel)]="alertDurationInSeconds"
-            id="alert-duration"
-            type="number"
-            min="1"
-            name="duration"
-        >
-    </div>
-    <fieldset>
-        <legend>Position:</legend>
-        <div>
-            <input
-                [(ngModel)]="alertPosition"
-                type="radio"
-                id="alert-bottom"
-                name="position"
-                [value]="positionValue.BottomCenter"
-            >
-            <label for="alert-bottom">Bottom/Center</label>
-        </div>
-        <div>
-            <input
-                [(ngModel)]="alertPosition"
-                type="radio"
-                id="alert-top"
-                name="position"
-                [value]="positionValue.TopRight"
-            >
-            <label for="alert-top">Top/Right</label>
-        </div>
-    </fieldset>
-    <button type="submit">Show Alert</button>
-</form>
+<h1>Accessible Alerts Demo</h1>
+<app-alert-form></app-alert-form>
+<p>
+    This demo illustrates the implementation of accessible alerts using the Popover API.
+    You can adapt the message as well as the duration and position of the alert.
+</p>
+<div class="not-supported">
+    <p>
+        You're
+        <span>browser doesn't support</span>
+        the Popover API.
+    </p>
+</div>
