@@ -37211,6 +37211,10 @@ var _AlertService = class _AlertService {
     this._currentAlert.showPopover();
     this._hideAlertTimeout = setTimeout(() => this._currentAlert?.hidePopover(), config2.duration);
   }
+  /**
+   * Creates a manual popover element with role="alert".
+   * Screenreaders automatically announce the alert when the popover is shown.
+   */
   createAlert(message, position) {
     const alertElement = this.document.createElement("div");
     alertElement.setAttribute("popover", "manual");
@@ -37226,8 +37230,8 @@ _AlertService.\u0275fac = function AlertService_Factory(t) {
 _AlertService.\u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AlertService, factory: _AlertService.\u0275fac, providedIn: "root" });
 var AlertService = _AlertService;
 
-// src/app/app.component.ts
-var _AppComponent = class _AppComponent {
+// src/app/components/alert-form/alert-form.component.ts
+var _AlertFormComponent = class _AlertFormComponent {
   constructor(alertService) {
     this.alertService = alertService;
     this.positionValue = AlertPosition;
@@ -37243,59 +37247,56 @@ var _AppComponent = class _AppComponent {
     this.alertService.showAlert(this.alertMessage, alertConfig);
   }
 };
-_AppComponent.\u0275fac = function AppComponent_Factory(t) {
-  return new (t || _AppComponent)(\u0275\u0275directiveInject(AlertService));
+_AlertFormComponent.\u0275fac = function AlertFormComponent_Factory(t) {
+  return new (t || _AlertFormComponent)(\u0275\u0275directiveInject(AlertService));
 };
-_AppComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 24, vars: 6, consts: [[3, "ngSubmit"], [1, "form-field"], ["for", "alert-message"], ["id", "alert-message", "type", "text", "name", "message", "spellcheck", "false", 3, "ngModel", "ngModelChange"], ["for", "alert-duration"], ["id", "alert-duration", "type", "number", "min", "1", "name", "duration", 3, "ngModel", "ngModelChange"], ["type", "radio", "id", "alert-bottom", "name", "position", 3, "ngModel", "value", "ngModelChange"], ["for", "alert-bottom"], ["type", "radio", "id", "alert-top", "name", "position", 3, "ngModel", "value", "ngModelChange"], ["for", "alert-top"], ["type", "submit"]], template: function AppComponent_Template(rf, ctx) {
+_AlertFormComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AlertFormComponent, selectors: [["app-alert-form"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 22, vars: 6, consts: [[3, "ngSubmit"], [1, "form-field"], ["for", "alert-message"], ["id", "alert-message", "type", "text", "name", "message", "spellcheck", "false", 3, "ngModel", "ngModelChange"], ["for", "alert-duration"], ["id", "alert-duration", "type", "number", "min", "1", "name", "duration", 3, "ngModel", "ngModelChange"], ["type", "radio", "id", "alert-bottom", "name", "position", 3, "ngModel", "value", "ngModelChange"], ["for", "alert-bottom"], ["type", "radio", "id", "alert-top", "name", "position", 3, "ngModel", "value", "ngModelChange"], ["for", "alert-top"], ["type", "submit"]], template: function AlertFormComponent_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "h1");
-    \u0275\u0275text(1, "Accessible Alerts with Popover API");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(2, "form", 0);
-    \u0275\u0275listener("ngSubmit", function AppComponent_Template_form_ngSubmit_2_listener() {
+    \u0275\u0275elementStart(0, "form", 0);
+    \u0275\u0275listener("ngSubmit", function AlertFormComponent_Template_form_ngSubmit_0_listener() {
       return ctx.showAlert();
     });
-    \u0275\u0275elementStart(3, "div", 1)(4, "label", 2);
-    \u0275\u0275text(5, "Message:");
+    \u0275\u0275elementStart(1, "div", 1)(2, "label", 2);
+    \u0275\u0275text(3, "Message:");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "input", 3);
-    \u0275\u0275listener("ngModelChange", function AppComponent_Template_input_ngModelChange_6_listener($event) {
+    \u0275\u0275elementStart(4, "input", 3);
+    \u0275\u0275listener("ngModelChange", function AlertFormComponent_Template_input_ngModelChange_4_listener($event) {
       return ctx.alertMessage = $event;
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(7, "div", 1)(8, "label", 4);
-    \u0275\u0275text(9, "Duration (seconds):");
+    \u0275\u0275elementStart(5, "div", 1)(6, "label", 4);
+    \u0275\u0275text(7, "Duration (seconds):");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(10, "input", 5);
-    \u0275\u0275listener("ngModelChange", function AppComponent_Template_input_ngModelChange_10_listener($event) {
+    \u0275\u0275elementStart(8, "input", 5);
+    \u0275\u0275listener("ngModelChange", function AlertFormComponent_Template_input_ngModelChange_8_listener($event) {
       return ctx.alertDurationInSeconds = $event;
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(11, "fieldset")(12, "legend");
-    \u0275\u0275text(13, "Position:");
+    \u0275\u0275elementStart(9, "fieldset")(10, "legend");
+    \u0275\u0275text(11, "Position:");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "div")(15, "input", 6);
-    \u0275\u0275listener("ngModelChange", function AppComponent_Template_input_ngModelChange_15_listener($event) {
+    \u0275\u0275elementStart(12, "div")(13, "input", 6);
+    \u0275\u0275listener("ngModelChange", function AlertFormComponent_Template_input_ngModelChange_13_listener($event) {
       return ctx.alertPosition = $event;
     });
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "label", 7);
-    \u0275\u0275text(17, "Bottom/Center");
+    \u0275\u0275elementStart(14, "label", 7);
+    \u0275\u0275text(15, "Bottom/Center");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(18, "div")(19, "input", 8);
-    \u0275\u0275listener("ngModelChange", function AppComponent_Template_input_ngModelChange_19_listener($event) {
+    \u0275\u0275elementStart(16, "div")(17, "input", 8);
+    \u0275\u0275listener("ngModelChange", function AlertFormComponent_Template_input_ngModelChange_17_listener($event) {
       return ctx.alertPosition = $event;
     });
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "label", 9);
-    \u0275\u0275text(21, "Top/Right");
+    \u0275\u0275elementStart(18, "label", 9);
+    \u0275\u0275text(19, "Top/Right");
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(22, "button", 10);
-    \u0275\u0275text(23, "Show Alert");
+    \u0275\u0275elementStart(20, "button", 10);
+    \u0275\u0275text(21, "Show Alert");
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    \u0275\u0275advance(6);
+    \u0275\u0275advance(4);
     \u0275\u0275property("ngModel", ctx.alertMessage);
     \u0275\u0275advance(4);
     \u0275\u0275property("ngModel", ctx.alertDurationInSeconds);
@@ -37304,10 +37305,39 @@ _AppComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _A
     \u0275\u0275advance(4);
     \u0275\u0275property("ngModel", ctx.alertPosition)("value", ctx.positionValue.TopRight);
   }
-}, dependencies: [CommonModule, FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NumberValueAccessor, RadioControlValueAccessor, NgControlStatus, NgControlStatusGroup, MinValidator, NgModel, NgForm], styles: ["\n\n[_nghost-%COMP%] {\n  display: block;\n  margin: 1rem;\n}\nform[_ngcontent-%COMP%] {\n  --form-spacing: 0.75rem;\n  container: alert-form / inline-size;\n  background: linear-gradient(90deg, rgb(246, 156, 200) 0%, rgb(237, 98, 209) 35%, rgb(126, 4, 143) 100%);\n  border: 1px solid black;\n  border-radius: 0.25rem;\n  max-width: 26rem;\n  padding: var(--form-spacing);\n}\nform[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n}\nform[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%]   [_ngcontent-%COMP%]:is(input[type=number], input[type=text])[_ngcontent-%COMP%] {\n  padding: 0.25rem 0.5rem;\n}\nform[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%]   input[type=number][_ngcontent-%COMP%] {\n  width: 3.5rem;\n}\nform[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%]   input[type=text][_ngcontent-%COMP%] {\n  flex-grow: 1;\n  min-width: 1rem;\n}\nform[_ngcontent-%COMP%]   fieldset[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 0.5rem;\n  border: none;\n  margin-bottom: 1rem;\n  padding: 0;\n}\nform[_ngcontent-%COMP%]   fieldset[_ngcontent-%COMP%]   legend[_ngcontent-%COMP%] {\n  padding: 0;\n  margin-bottom: 0.5rem;\n}\n@container alert-form (max-width: 15rem) {\n  form[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%] {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  form[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%]   input[type=text][_ngcontent-%COMP%] {\n    width: calc(100% - 2 * var(--form-spacing));\n  }\n}"] });
+}, dependencies: [CommonModule, FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NumberValueAccessor, RadioControlValueAccessor, NgControlStatus, NgControlStatusGroup, MinValidator, NgModel, NgForm], styles: ["\n\n[_nghost-%COMP%] {\n  display: block;\n}\nform[_ngcontent-%COMP%] {\n  --form-spacing: 0.75rem;\n  container: alert-form / inline-size;\n  background: linear-gradient(90deg, rgb(246, 128, 185) 0%, rgb(237, 98, 209) 35%, rgb(184, 6, 207) 100%);\n  border: 1px solid black;\n  border-radius: 0.25rem;\n  max-width: 26rem;\n  padding: var(--form-spacing);\n}\nform[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n}\nform[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%]   [_ngcontent-%COMP%]:is(input[type=number], input[type=text])[_ngcontent-%COMP%] {\n  padding: 0.25rem 0.5rem;\n}\nform[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%]   input[type=number][_ngcontent-%COMP%] {\n  width: 3.5rem;\n}\nform[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%]   input[type=text][_ngcontent-%COMP%] {\n  flex-grow: 1;\n  min-width: 1rem;\n}\nform[_ngcontent-%COMP%]   fieldset[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 0.5rem;\n  border: none;\n  margin-bottom: 1rem;\n  padding: 0;\n}\nform[_ngcontent-%COMP%]   fieldset[_ngcontent-%COMP%]   legend[_ngcontent-%COMP%] {\n  padding: 0;\n  margin-bottom: 0.5rem;\n}\nform[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  --btn-color: hsl(0, 10%, 10%);\n  background: var(--btn-color);\n  border: none;\n  border-radius: 0.25rem;\n  color: white;\n  font-size: 1rem;\n  font-weight: bold;\n  padding: 0.5rem 1rem;\n}\n@supports (color: hsl(from white h s l)) {\n  form[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n    background: hsl(from var(--btn-color) h s l / 90%);\n  }\n}\n@container alert-form (max-width: 15rem) {\n  form[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%] {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  form[_ngcontent-%COMP%]   .form-field[_ngcontent-%COMP%]   input[type=text][_ngcontent-%COMP%] {\n    width: calc(100% - 2 * var(--form-spacing));\n  }\n}"] });
+var AlertFormComponent = _AlertFormComponent;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AlertFormComponent, { className: "AlertFormComponent", filePath: "src\\app\\components\\alert-form\\alert-form.component.ts", lineNumber: 14 });
+})();
+
+// src/app/app.component.ts
+var _AppComponent = class _AppComponent {
+};
+_AppComponent.\u0275fac = function AppComponent_Factory(t) {
+  return new (t || _AppComponent)();
+};
+_AppComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 11, vars: 0, consts: [[1, "not-supported"]], template: function AppComponent_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "h1");
+    \u0275\u0275text(1, "Accessible Alerts Demo");
+    \u0275\u0275elementEnd();
+    \u0275\u0275element(2, "app-alert-form");
+    \u0275\u0275elementStart(3, "p");
+    \u0275\u0275text(4, " This demo illustrates the implementation of accessible alerts using the Popover API. You can adapt the message as well as the duration and position of the alert.\n");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "div", 0)(6, "p");
+    \u0275\u0275text(7, " You're ");
+    \u0275\u0275elementStart(8, "span");
+    \u0275\u0275text(9, "browser doesn't support");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(10, " the Popover API. ");
+    \u0275\u0275elementEnd()();
+  }
+}, dependencies: [AlertFormComponent], styles: ["\n\n[_nghost-%COMP%] {\n  display: block;\n  margin: 1rem;\n}\np[_ngcontent-%COMP%]:not([class]) {\n  line-height: 1.4;\n  margin-top: 2rem;\n  max-width: 26rem;\n}\n.not-supported[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: rgb(0 0 0 / 50%);\n  height: 100vh;\n  width: 100vw;\n}\n.not-supported[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  border: 2px solid black;\n  background: white;\n  margin: 2rem;\n  padding: 2rem;\n}\n.not-supported[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-weight: bold;\n}\n@supports selector(div:popover-open) {\n  .not-supported[_ngcontent-%COMP%] {\n    display: none;\n  }\n}"] });
 var AppComponent = _AppComponent;
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AppComponent, { className: "AppComponent", filePath: "src\\app\\app.component.ts", lineNumber: 15 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AppComponent, { className: "AppComponent", filePath: "src\\app\\app.component.ts", lineNumber: 11 });
 })();
 
 // src/main.ts
